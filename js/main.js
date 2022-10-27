@@ -8,25 +8,30 @@ let active = 0;
 for (let i = 0; i < images.length; i++) {
     items.innerHTML += (`<div class="item"><img src="${images[i]}"></div>`);
 }
-// document.querySelector('.item').classList.remove('item');
 document.querySelector('.item').classList.add('item-active');
-// document.querySelector('.item').classList.remove('item');
-let img = document.querySelectorAll('.item');
+
+const itemslist = document.querySelectorAll(".item");
 
 document.querySelector('.next').addEventListener("click" , function(){
-
-    img[active].classList.remove('item-active');
-    active += 1;
-    img[active].classList.add('item-active');
-    if(active == img.length - 1){
-        img[active].classList.remove('item-active');
+    const itemslist = document.querySelectorAll(".item");
+    itemslist[active].classList.remove("item-active");
+    if(active === images.length -1){
         active = 0;
-        img[active].classList.add('item-active');
     }
+    else{
+        active++;
+    }
+    itemslist[active].classList.add("item-active");
 })
 
 document.querySelector('.prev').addEventListener("click" , function(){
-    img[active].classList.remove('item-active');
-    active -= 1;
-    img[active].classList.add('item-active');
+
+    itemslist[active].classList.remove("item-active");
+    if(active === 0){
+        active = images.length -1;
+    }
+    else{
+        active--;
+    }
+    itemslist[active].classList.add("item-active");
 })
